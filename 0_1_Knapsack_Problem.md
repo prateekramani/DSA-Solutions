@@ -20,3 +20,32 @@ class Solution {
     }
 }
 ```
+
+Tabulation
+
+```
+class Solution {
+    static int knapsack(int W, int val[], int wt[]) {
+        
+       int dp[][] = new int [W+1][val.length+1];
+       
+       for (int i=0;i<W;i++) dp[W][0] = 0;
+       for (int i=0;i<val.length;i++) dp[0][i] = 0;
+       
+       for (int i=1;i<dp.length;i++){
+           for (int j=1;j<dp[0].length;j++){
+               if (wt[j-1] <= i){
+                   dp[i][j] = Math.max(val[j-1]+ dp[i-wt[j-1]][j-1] , dp[i][j-1]);
+               } else {
+                   dp[i][j] = dp[i][j-1];
+               }
+           }
+       }
+       
+       return dp[W][val.length];
+       
+    }
+
+}
+
+```
