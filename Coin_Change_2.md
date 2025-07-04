@@ -58,3 +58,33 @@ class Solution {
     
 }
 ```
+
+Tabulation
+```
+class Solution {
+
+    public int minCoins(int coins[], int sum) {
+        
+        int [][] dp = new int[sum+1][coins.length+1];
+        // sum -> row num -> col
+        for (int i=0;i<=coins.length;i++) dp[0][i] = 0;
+        for (int i=0;i<=sum;i++) dp[i][0] = Integer.MAX_VALUE-1;
+        for (int i=0;i<=sum;i++) {
+            if (i%coins[0]==0) dp[i][1] = i/coins[0];
+            else dp[i][1] = Integer.MAX_VALUE-1;
+        }
+        
+        for (int row=1;row<=sum;row++){
+            for (int col=2;col <= coins.length;col++){
+                if (coins[col-1] > row)
+                    dp[row][col] = dp[row][col-1];
+                else 
+                    dp[row][col] = Math.min(dp[row][col-1], 1+dp[row-coins[col-1]][col]);
+            }
+        }
+        
+        return dp[sum][coins.length] == Integer.MAX_VALUE-1 ? -1 : dp[sum][coins.length];   
+
+    }
+}
+```
