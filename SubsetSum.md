@@ -98,3 +98,21 @@ class Solution {
         
     }
 }
+
+
+Space Optimized Approach
+```
+ boolean knapsack(int W, int[] wt) {
+        
+        
+        boolean[] dp = new boolean[W + 1];
+        dp[0] = true;
+        for (int i = 1; i <= wt.length; i++) {
+            for (int j = W; j >= wt[i - 1]; j--) {
+                dp[j] = dp[j] || dp[j - wt[i - 1]];
+            }
+        }
+      	// System.out.println(Arrays.toString(dp));
+        return dp[W];
+    }
+```
