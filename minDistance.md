@@ -1,3 +1,32 @@
+
+gfg submission
+```
+   public int editDistance(String s1, String s2) {
+        // Code here
+        int[][] dp = new int[s1.length()+1][s2.length()+1];
+        
+        // traversing over row
+        for (int row=0;row<dp.length;row++) dp[row][0] = row;
+        
+        // traversing over col
+        for (int col=0;col<dp[0].length;col++) dp[0][col] = col;
+        
+        
+        for (int i=1;i<dp.length;i++) {
+            for (int j=1;j<dp[0].length;j++) {
+                if (s1.charAt(i-1) == s2.charAt(j-1)){
+                    dp[i][j] = dp[i-1][j-1];
+                } else {
+                    dp[i][j] = 1 + Math.min(dp[i-1][j-1] , Math.min(dp[i-1][j], dp[i][j-1]));
+                }
+            }
+        }
+        
+        
+        return dp[s1.length()][s2.length()];
+    }
+```
+
 https://leetcode.com/problems/edit-distance/description/
 ```
 public int minDistance(String word1, String word2) {
