@@ -102,6 +102,7 @@ class Solution {
 
 Space Optimized Approach
 ```
+// subset sum in O(W) Space
  boolean knapsack(int W, int[] wt) {
         
         
