@@ -21,7 +21,7 @@ DP + Memo
         return dp[n] = tempAns;
         
     }
-
+```
 
 Top Down Approach (Best)
 ```
@@ -43,6 +43,4 @@ public int cutRod(int[] price) {
         
         return dp[price.length];
     }
-```
-
 ```
